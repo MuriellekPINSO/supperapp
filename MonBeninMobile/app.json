@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "name": "MonBénin",
+    "slug": "MonBeninMobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#007A4D"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.monbenin.app"
+    },
+    "android": {
+      "package": "com.monbenin.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#007A4D"
+      },
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}

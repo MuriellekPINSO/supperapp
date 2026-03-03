@@ -57,9 +57,9 @@ export default function CNIScreen({ navigation }) {
                         <View style={{ flex: 1 }}><Text style={[s.warningTitle, { color: colors.amber }]}>Expire dans 43 jours</Text><Text style={[s.warningSub, { color: colors.textSecondary }]}>Renouvelez avant le 10 Avril 2026 pour éviter toute interruption.</Text></View>
                     </View>
                     <View style={s.infoRow}>
-                        {[{ icon: Clock, color: colors.blue, label: "Délivrance", value: "5 ans" }, { icon: MapPin, color: colors.primary, label: "Lieu", value: "Cotonou" }, { icon: RefreshCw, color: colors.purple, label: "Coût", value: "3 500 F" }].map(info => (
+                        {[{ icon: Clock, color: colors.secondary, label: "Délivrance", value: "5 ans" }, { icon: MapPin, color: colors.primary, label: "Lieu", value: "Cotonou" }, { icon: RefreshCw, color: colors.amber, label: "Coût", value: "3 500 F" }].map(info => (
                             <View key={info.label} style={[s.infoCard, { backgroundColor: colors.bgCard, borderColor: colors.border }]}>
-                                <info.icon size={18} color={info.color} /><Text style={[s.infoLabel, { color: colors.textMuted }]}>{info.label}</Text><Text style={[s.infoValue, { color: colors.textPrimary }]}>{info.value}</Text>
+                                <info.icon size={18} color={colors.textMuted} /><Text style={[s.infoLabel, { color: colors.textMuted }]}>{info.label}</Text><Text style={[s.infoValue, { color: colors.textPrimary }]}>{info.value}</Text>
                             </View>
                         ))}
                     </View>

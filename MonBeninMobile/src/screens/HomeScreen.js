@@ -4,6 +4,7 @@ import {
     Text,
     ScrollView,
     TouchableOpacity,
+    Pressable,
     StyleSheet,
     Animated,
     Dimensions,
@@ -75,26 +76,26 @@ export default function HomeScreen({ navigation }) {
     }, []);
 
     const alerts = [
-        { Icon: Car, title: "Assurance auto expire le 15 Mars", sub: "Toyota Corolla · AB 1234 BJ", badge: "16j", gradient: ["#FF6B35", "#FF8F65"], bgColor: "rgba(255, 107, 53, 0.08)", screen: "Assurance" },
+        { Icon: Car, title: "Assurance auto expire le 15 Mars", sub: "Toyota Corolla · AB 1234 BJ", badge: "16j", gradient: [colors.amber, "#F5C36A"], bgColor: colors.amberSoft, screen: "Assurance" },
         { Icon: Coins, title: "Aide CNSS disponible", sub: "Allocation familiale · 45 000 FCFA", badge: "Nouveau", gradient: [colors.primary, colors.primaryLight], bgColor: colors.primarySoft, screen: "CNSS" },
-        { Icon: Lightbulb, title: "Facture SBEE disponible", sub: "Échéance: 05 Mars · 28 400 FCFA", badge: "À payer", gradient: ["#3B82F6", "#60A5FA"], bgColor: colors.blueSoft, screen: "Factures" },
+        { Icon: Lightbulb, title: "Facture SBEE disponible", sub: "Échéance: 05 Mars · 28 400 FCFA", badge: "À payer", gradient: [colors.primary, colors.primaryLight], bgColor: colors.primarySoft, screen: "Factures" },
     ];
 
     const services = [
-        { Icon: IdCard, name: "Mes docs", screen: "Docs", featured: true },
+        { Icon: IdCard, name: "Mes docs", screen: "Docs", color: colors.primary },
         { Icon: Lightbulb, name: "Factures", screen: "Factures", color: colors.amber },
-        { Icon: Hospital, name: "RDV médical", screen: "RDV", color: colors.red },
-        { Icon: FileText, name: "Impôts", screen: "Impots", color: colors.blue },
-        { Icon: GraduationCap, name: "Université", screen: "Universite", color: colors.purple },
-        { Icon: FileEdit, name: "Déc. perte", screen: "Perte", color: colors.cyan },
+        { Icon: Hospital, name: "RDV médical", screen: "RDV", color: colors.secondary },
+        { Icon: FileText, name: "Impôts", screen: "Impots", color: colors.secondary },
+        { Icon: GraduationCap, name: "Université", screen: "Universite", color: colors.secondary },
+        { Icon: FileEdit, name: "Déc. perte", screen: "Perte", color: colors.secondary },
         { Icon: Star, name: "Opportunités", screen: "Opportunites", color: colors.amber },
         { Icon: Sparkles, name: "IA Citoyenne", screen: "AIChat", color: colors.primaryLight },
     ];
 
     const docs = [
-        { Icon: IdCard, type: "CNI", name: "Carte d'Identité", exp: "⚠ 43j", gradient: ["#00875A", "#004D34"], urgent: true, screen: "CNI" },
-        { Icon: Car, type: "Permis B", name: "Permis de Conduire", exp: "Valide 2029", gradient: ["#1E3A5F", "#0F1D30"], screen: "Docs" },
-        { Icon: Shield, type: "Santé", name: "Carnet de Santé", exp: "78/100", gradient: ["#065F6C", "#033B44"], screen: "Sante" },
+        { Icon: IdCard, type: "CNI", name: "Carte d'Identité", exp: "⚠ 43j", gradient: [colors.primaryDark, colors.primaryDeep], urgent: true, screen: "CNI" },
+        { Icon: Car, type: "Permis B", name: "Permis de Conduire", exp: "Valide 2029", gradient: ["#1C2333", "#0A0E17"], screen: "Docs" },
+        { Icon: Shield, type: "Santé", name: "Carnet de Santé", exp: "78/100", gradient: ["#1A2E1E", "#0D1A11"], screen: "Sante" },
     ];
 
     const headerGradient = isDark
@@ -175,7 +176,7 @@ export default function HomeScreen({ navigation }) {
                 {alerts.map((a, i) => (
                     <AnimatedCard key={a.title} delay={400 + i * 80}>
                         <TouchableOpacity onPress={() => navigation.navigate(a.screen)} style={[s.alertCard, { backgroundColor: colors.bgCard, borderColor: colors.border, borderLeftColor: a.gradient[0] }]} activeOpacity={0.7}>
-                            <View style={[s.alertIconWrap, { backgroundColor: a.bgColor }]}><a.Icon size={18} color={a.gradient[0]} /></View>
+                            <View style={[s.alertIconWrap, { backgroundColor: colors.glass }]}><a.Icon size={18} color={colors.textMuted} /></View>
                             <View style={{ flex: 1 }}>
                                 <Text style={[s.alertTitle, { color: colors.textPrimary }]}>{a.title}</Text>
                                 <Text style={[s.alertSub, { color: colors.textMuted }]}>{a.sub}</Text>
@@ -193,12 +194,16 @@ export default function HomeScreen({ navigation }) {
                     </View>
                     <View style={s.servicesGrid}>
                         {services.map((sv) => (
-                            <TouchableOpacity key={sv.name} onPress={() => navigation.navigate(sv.screen)} style={[s.serviceCard, { backgroundColor: colors.bgCard, borderColor: sv.featured ? colors.borderActive : colors.border }, sv.featured && { backgroundColor: isDark ? "rgba(0,176,116,0.06)" : "rgba(0,168,107,0.06)" }]} activeOpacity={0.7}>
-                                <View style={[s.serviceIconWrap, { backgroundColor: sv.featured ? (isDark ? "rgba(0,224,142,0.15)" : "rgba(0,168,107,0.1)") : colors.glass }]}>
-                                    <sv.Icon size={20} color={sv.featured ? colors.primaryLight : sv.color || colors.textSecondary} />
-                                </View>
-                                <Text style={[s.serviceLabel, { color: sv.featured ? colors.primaryLight : colors.textSecondary }]} numberOfLines={1}>{sv.name}</Text>
-                            </TouchableOpacity>
+                            <Pressable key={sv.name} onPress={() => navigation.navigate(sv.screen)} style={({ pressed }) => [s.serviceCard, { backgroundColor: pressed ? colors.primarySoft : colors.bgCard, borderColor: pressed ? colors.borderActive : colors.border }]}>
+                                {({ pressed }) => (
+                                    <>
+                                        <View style={[s.serviceIconWrap, { backgroundColor: pressed ? colors.primarySoft : colors.glass }]}>
+                                            <sv.Icon size={20} color={pressed ? sv.color : colors.textMuted} />
+                                        </View>
+                                        <Text style={[s.serviceLabel, { color: pressed ? sv.color : colors.textSecondary }]} numberOfLines={1}>{sv.name}</Text>
+                                    </>
+                                )}
+                            </Pressable>
                         ))}
                     </View>
                 </AnimatedCard>

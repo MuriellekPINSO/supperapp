@@ -28,8 +28,8 @@ export default function FacturesScreen({ navigation }) {
 
     const bills = [
         { Icon: Lightbulb, color: colors.amber, bg: colors.amberSoft, name: "SBEE - Électricité", sub: "Janvier 2026", amount: "28 400" },
-        { Icon: Droplets, color: colors.blue, bg: colors.blueSoft, name: "SONEB - Eau", sub: "Janvier 2026", amount: "14 200" },
-        { Icon: Landmark, color: colors.purple, bg: colors.purpleSoft, name: "Quittance Trésor", sub: "Patente 2026", amount: "45 000" },
+        { Icon: Droplets, color: colors.primary, bg: colors.primarySoft, name: "SONEB - Eau", sub: "Janvier 2026", amount: "14 200" },
+        { Icon: Landmark, color: colors.secondary, bg: colors.secondarySoft, name: "Quittance Trésor", sub: "Patente 2026", amount: "45 000" },
     ];
 
     const handlePay = () => {
@@ -60,7 +60,7 @@ export default function FacturesScreen({ navigation }) {
                     <View style={[s.billsCard, { backgroundColor: colors.bgCard, borderColor: colors.border }]}>
                         {bills.map((b, i) => (
                             <TouchableOpacity key={b.name} onPress={() => { setSelected(i); setDone(false); }} style={[s.billItem, selected === i && { backgroundColor: colors.primarySoft, borderLeftWidth: 3, borderLeftColor: colors.primary }, i < bills.length - 1 && { borderBottomWidth: 1, borderBottomColor: colors.border }]} activeOpacity={0.7}>
-                                <View style={[s.billIcon, { backgroundColor: b.bg }]}><b.Icon size={20} color={b.color} /></View>
+                                <View style={[s.billIcon, { backgroundColor: selected === i ? b.bg : colors.glass }]}><b.Icon size={20} color={selected === i ? b.color : colors.textMuted} /></View>
                                 <View style={{ flex: 1 }}><Text style={[s.billName, { color: colors.textPrimary }]}>{b.name}</Text><Text style={[s.billSub, { color: colors.textMuted }]}>{b.sub}</Text></View>
                                 <View style={{ alignItems: "flex-end" }}><Text style={[s.billAmount, { color: colors.textPrimary }]}>{b.amount}</Text><Text style={[s.billCurrency, { color: colors.textMuted }]}>FCFA</Text></View>
                                 {selected === i && <View style={[s.selectedDot, { backgroundColor: colors.primary }]} />}

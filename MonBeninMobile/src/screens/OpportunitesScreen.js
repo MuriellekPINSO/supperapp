@@ -23,8 +23,8 @@ export default function OpportunitesScreen() {
     const { colors, isDark } = useAppTheme();
 
     const opps = [
-        { Icon: GraduationCap, tag: "Bourse", tagColor: colors.purple, tagBg: colors.purpleSoft, title: "Bourse WAEMU — Master", desc: "Bourses CEDEAO pour études supérieures. Frais de scolarité + allocation mensuelle couverts.", deadline: "30 Mars 2026", match: 92 },
-        { Icon: Briefcase, tag: "Emploi", tagColor: colors.blue, tagBg: colors.blueSoft, title: "INFOSEC — Analyste Éco.", desc: "12 postes ouverts à la DG Budget. Bac+3 minimum requis. Contrat CDI.", deadline: "15 Avril 2026", match: 85 },
+        { Icon: GraduationCap, tag: "Bourse", tagColor: colors.primary, tagBg: colors.primarySoft, title: "Bourse WAEMU — Master", desc: "Bourses CEDEAO pour études supérieures. Frais de scolarité + allocation mensuelle couverts.", deadline: "30 Mars 2026", match: 92 },
+        { Icon: Briefcase, tag: "Emploi", tagColor: colors.secondary, tagBg: colors.secondarySoft, title: "INFOSEC — Analyste Éco.", desc: "12 postes ouverts à la DG Budget. Bac+3 minimum requis. Contrat CDI.", deadline: "15 Avril 2026", match: 85 },
         { Icon: TrendingUp, tag: "PME", tagColor: colors.amber, tagBg: colors.amberSoft, title: "APIEX — Financement Jeunes", desc: "Subvention jusqu'à 5M FCFA pour les jeunes entrepreneurs béninois.", deadline: "Permanent", match: 78 },
     ];
 
@@ -50,7 +50,7 @@ export default function OpportunitesScreen() {
                     <FadeInView key={o.title} delay={200 + i * 120}>
                         <TouchableOpacity style={[s.oppCard, { backgroundColor: colors.bgCard, borderColor: colors.border }]} activeOpacity={0.8}>
                             <View style={s.oppHeader}>
-                                <View style={[s.tag, { backgroundColor: o.tagBg }]}><o.Icon size={12} color={o.tagColor} /><Text style={[s.tagText, { color: o.tagColor }]}>{o.tag}</Text></View>
+                                <View style={[s.tag, { backgroundColor: colors.glass }]}><o.Icon size={12} color={colors.textMuted} /><Text style={[s.tagText, { color: colors.textSecondary }]}>{o.tag}</Text></View>
                                 <View style={s.matchBadge}><Text style={[s.matchPercent, { color: colors.primaryLight }]}>{o.match}%</Text><Text style={[s.matchLabel, { color: colors.textMuted }]}>match</Text></View>
                             </View>
                             <Text style={[s.oppTitle, { color: colors.textPrimary }]}>{o.title}</Text>

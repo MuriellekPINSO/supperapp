@@ -69,7 +69,7 @@ export default function DocsScreen({ navigation }) {
                         <View style={[s.groupCard, { backgroundColor: colors.bgCard, borderColor: colors.border }]}>
                             {g.items.map((item, i) => (
                                 <TouchableOpacity key={item.title} onPress={() => item.screen && navigation.navigate(item.screen)} disabled={!item.screen} style={[s.item, i < g.items.length - 1 && { borderBottomWidth: 1, borderBottomColor: colors.border }]} activeOpacity={0.7}>
-                                    <View style={[s.itemIcon, { backgroundColor: colors.primarySoft }]}><item.Icon size={18} color={colors.primary} /></View>
+                                    <View style={[s.itemIcon, { backgroundColor: colors.glass }]}><item.Icon size={18} color={colors.textMuted} /></View>
                                     <View style={{ flex: 1 }}>
                                         <Text style={[s.itemTitle, { color: colors.textPrimary }]}>{item.title}</Text>
                                         <Text style={[s.itemSub, { color: colors.textMuted }]}>{item.sub}</Text>

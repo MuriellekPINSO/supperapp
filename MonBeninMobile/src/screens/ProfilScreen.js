@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { View, Text, ScrollView, StyleSheet, Animated, TouchableOpacity, Switch } from "react-native";
+import { View, Text, ScrollView, StyleSheet, Animated, TouchableOpacity, Pressable, Switch } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAppTheme } from "../ThemeContext";
@@ -32,18 +32,18 @@ export default function ProfilScreen() {
     }, []);
 
     const personalInfo = [
-        { Icon: Calendar, t: "Naissance", s2: "14/08/1992 · Cotonou", color: colors.blue },
-        { Icon: MapPin, t: "Adresse", s2: "Fidjrossè, Cotonou", color: colors.red },
+        { Icon: Calendar, t: "Naissance", s2: "14/08/1992 · Cotonou", color: colors.secondary },
+        { Icon: MapPin, t: "Adresse", s2: "Fidjrossè, Cotonou", color: colors.secondary },
         { Icon: Phone, t: "Téléphone", s2: "+229 97 XX XX XX", color: colors.primary },
-        { Icon: Mail, t: "Email", s2: "k.adechina@email.com", color: colors.purple },
+        { Icon: Mail, t: "Email", s2: "k.adechina@email.com", color: colors.secondary },
     ];
 
     const settings = [
         { Icon: Bell, t: "Notifications", s2: "Activées", color: colors.amber },
-        { Icon: Lock, t: "Sécurité", s2: "Empreinte digitale", color: colors.red },
-        { Icon: Globe, t: "Langue", s2: "Français", color: colors.blue },
+        { Icon: Lock, t: "Sécurité", s2: "Empreinte digitale", color: colors.primary },
+        { Icon: Globe, t: "Langue", s2: "Français", color: colors.secondary },
         { Icon: CreditCard, t: "Paiement", s2: "MTN MoMo", color: colors.amber },
-        { Icon: Settings, t: "Préférences", s2: "Personnaliser", color: colors.textMuted },
+        { Icon: Settings, t: "Préférences", s2: "Personnaliser", color: colors.secondary },
     ];
 
     const headerGrad = isDark ? [colors.primaryDeep, colors.bgDark] : [colors.primaryDark, colors.primary];
@@ -73,8 +73,8 @@ export default function ProfilScreen() {
                     <Text style={[s.sectionLabel, { color: colors.textMuted }]}>Apparence</Text>
                     <View style={[s.section, { backgroundColor: colors.bgCard, borderColor: colors.border }]}>
                         <View style={s.themeRow}>
-                            <View style={[s.rowIcon, { backgroundColor: isDark ? colors.purpleSoft : colors.amberSoft }]}>
-                                {isDark ? <Moon size={18} color={colors.purple} /> : <Sun size={18} color={colors.amber} />}
+                            <View style={[s.rowIcon, { backgroundColor: colors.glass }]}>
+                                {isDark ? <Moon size={18} color={colors.textMuted} /> : <Sun size={18} color={colors.textMuted} />}
                             </View>
                             <View style={{ flex: 1 }}>
                                 <Text style={[s.rowTitle, { color: colors.textPrimary }]}>{isDark ? "Mode sombre" : "Mode clair"}</Text>
@@ -97,7 +97,7 @@ export default function ProfilScreen() {
                     <View style={[s.section, { backgroundColor: colors.bgCard, borderColor: colors.border }]}>
                         {personalInfo.map((item, i, arr) => (
                             <View key={item.t} style={[s.row, i < arr.length - 1 && { borderBottomWidth: 1, borderBottomColor: colors.border }]}>
-                                <View style={[s.rowIcon, { backgroundColor: `${item.color}15` }]}><item.Icon size={18} color={item.color} /></View>
+                                <View style={[s.rowIcon, { backgroundColor: colors.glass }]}><item.Icon size={18} color={colors.textMuted} /></View>
                                 <View style={{ flex: 1 }}><Text style={[s.rowTitle, { color: colors.textPrimary }]}>{item.t}</Text><Text style={[s.rowSub, { color: colors.textMuted }]}>{item.s2}</Text></View>
                             </View>
                         ))}
@@ -109,11 +109,15 @@ export default function ProfilScreen() {
                     <Text style={[s.sectionLabel, { color: colors.textMuted }]}>Paramètres</Text>
                     <View style={[s.section, { backgroundColor: colors.bgCard, borderColor: colors.border }]}>
                         {settings.map((item, i, arr) => (
-                            <TouchableOpacity key={item.t} style={[s.row, i < arr.length - 1 && { borderBottomWidth: 1, borderBottomColor: colors.border }]} activeOpacity={0.7}>
-                                <View style={[s.rowIcon, { backgroundColor: `${item.color}15` }]}><item.Icon size={18} color={item.color} /></View>
-                                <View style={{ flex: 1 }}><Text style={[s.rowTitle, { color: colors.textPrimary }]}>{item.t}</Text><Text style={[s.rowSub, { color: colors.textMuted }]}>{item.s2}</Text></View>
-                                <ChevronRight size={16} color={colors.textMuted} />
-                            </TouchableOpacity>
+                            <Pressable key={item.t} style={({ pressed }) => [s.row, i < arr.length - 1 && { borderBottomWidth: 1, borderBottomColor: colors.border }, pressed && { backgroundColor: colors.glass }]}>
+                                {({ pressed }) => (
+                                    <>
+                                        <View style={[s.rowIcon, { backgroundColor: pressed ? colors.primarySoft : colors.glass }]}><item.Icon size={18} color={pressed ? colors.primary : colors.textMuted} /></View>
+                                        <View style={{ flex: 1 }}><Text style={[s.rowTitle, { color: colors.textPrimary }]}>{item.t}</Text><Text style={[s.rowSub, { color: colors.textMuted }]}>{item.s2}</Text></View>
+                                        <ChevronRight size={16} color={colors.textMuted} />
+                                    </>
+                                )}
+                            </Pressable>
                         ))}
                     </View>
                 </FadeInView>

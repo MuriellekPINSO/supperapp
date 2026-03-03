@@ -22,16 +22,12 @@ export const darkColors = {
   textAccent: "#00E08E",
 
   // Accents
-  amber: "#F59E0B",
-  amberSoft: "rgba(245, 158, 11, 0.12)",
+  amber: "#F5A623",
+  amberSoft: "rgba(245, 166, 35, 0.12)",
   red: "#EF4444",
   redSoft: "rgba(239, 68, 68, 0.12)",
-  blue: "#3B82F6",
-  blueSoft: "rgba(59, 130, 246, 0.12)",
-  purple: "#8B5CF6",
-  purpleSoft: "rgba(139, 92, 246, 0.12)",
-  cyan: "#06B6D4",
-  cyanSoft: "rgba(6, 182, 212, 0.12)",
+  secondary: "#6B7280",
+  secondarySoft: "rgba(107, 114, 128, 0.10)",
 
   // Borders
   border: "rgba(255, 255, 255, 0.06)",
@@ -71,16 +67,12 @@ export const lightColors = {
   textAccent: "#00A86B",
 
   // Accents
-  amber: "#D97706",
-  amberSoft: "rgba(217, 119, 6, 0.08)",
+  amber: "#D4930D",
+  amberSoft: "rgba(212, 147, 13, 0.08)",
   red: "#DC2626",
   redSoft: "rgba(220, 38, 38, 0.08)",
-  blue: "#2563EB",
-  blueSoft: "rgba(37, 99, 235, 0.08)",
-  purple: "#7C3AED",
-  purpleSoft: "rgba(124, 58, 237, 0.08)",
-  cyan: "#0891B2",
-  cyanSoft: "rgba(8, 145, 178, 0.08)",
+  secondary: "#6B7280",
+  secondarySoft: "rgba(107, 114, 128, 0.06)",
 
   // Borders
   border: "rgba(0, 0, 0, 0.06)",

@@ -66,7 +66,9 @@ export default function AIChatScreen({ navigation }) {
         const newMessages = [...messages, { role: "user", content: msg }]; setMessages(newMessages); setLoading(true);
         try {
             const geminiMessages = newMessages.map((m) => ({ role: m.role === "assistant" ? "model" : "user", parts: [{ text: m.content }] }));
-            const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=AIzaSyBB-a1IBvcwMIhYPIK38WEwX9s-cFHecDA`, {
+            const apiKey = process.env.EXPO_PUBLIC_GEMINI_API_KEY;
+            if (!apiKey) throw new Error("Clé API Gemini manquante. Vérifiez votre fichier .env");
+            const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`, {
                 method: "POST", headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ systemInstruction: { parts: [{ text: PROFILE }] }, contents: geminiMessages, generationConfig: { maxOutputTokens: 1000, temperature: 0.7 } }),
             });

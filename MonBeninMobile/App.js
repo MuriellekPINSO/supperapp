@@ -19,6 +19,8 @@ import {
   FileEdit,
 } from "lucide-react-native";
 import { ThemeProvider, useAppTheme } from "./src/ThemeContext";
+import { AuthProvider, useAuth } from "./src/AuthContext";
+import AuthScreen from "./src/screens/AuthScreen";
 import HomeScreen from "./src/screens/HomeScreen";
 import DocsScreen from "./src/screens/DocsScreen";
 import CNIScreen from "./src/screens/CNIScreen";
@@ -137,6 +139,19 @@ function HomeTabs() {
 
 function AppContent() {
   const { colors, isDark } = useAppTheme();
+  const { isAuthenticated, login } = useAuth();
+
+  if (!isAuthenticated) {
+    return (
+      <>
+        <StatusBar
+          barStyle={colors.statusBar}
+          backgroundColor={colors.bgDark}
+        />
+        <AuthScreen onAuth={login} />
+      </>
+    );
+  }
 
   const navTheme = {
     ...DefaultTheme,
@@ -302,7 +317,9 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <ThemeProvider>
-        <AppContent />
+        <AuthProvider>
+          <AppContent />
+        </AuthProvider>
       </ThemeProvider>
     </SafeAreaProvider>
   );

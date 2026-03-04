@@ -3,6 +3,7 @@ import { View, Text, ScrollView, StyleSheet, Animated, TouchableOpacity, Pressab
 import { LinearGradient } from "expo-linear-gradient";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAppTheme } from "../ThemeContext";
+import { useAuth } from "../AuthContext";
 import { shadows } from "../theme";
 import { User, Calendar, MapPin, Phone, Mail, Bell, Lock, Globe, ChevronRight, Shield, LogOut, Settings, CreditCard, Sun, Moon } from "lucide-react-native";
 
@@ -21,6 +22,7 @@ function FadeInView({ delay = 0, children, style }) {
 export default function ProfilScreen() {
     const insets = useSafeAreaInsets();
     const { colors, isDark, toggleTheme } = useAppTheme();
+    const { logout } = useAuth();
     const scaleAnim = useRef(new Animated.Value(0.8)).current;
     const fadeAnim = useRef(new Animated.Value(0)).current;
 
@@ -124,7 +126,7 @@ export default function ProfilScreen() {
 
                 {/* Logout */}
                 <FadeInView delay={600}>
-                    <TouchableOpacity style={[s.logoutBtn, { backgroundColor: colors.redSoft, borderColor: "rgba(239,68,68,0.2)" }]} activeOpacity={0.7}>
+                    <TouchableOpacity onPress={logout} style={[s.logoutBtn, { backgroundColor: colors.redSoft, borderColor: "rgba(239,68,68,0.2)" }]} activeOpacity={0.7}>
                         <LogOut size={18} color={colors.red} /><Text style={[s.logoutText, { color: colors.red }]}>Se déconnecter</Text>
                     </TouchableOpacity>
                     <Text style={[s.version, { color: colors.textMuted }]}>MonBénin v2.0 · SDK 54</Text>

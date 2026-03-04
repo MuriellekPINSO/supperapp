@@ -10,6 +10,7 @@ import {
     Dimensions,
     KeyboardAvoidingView,
     Platform,
+    Image,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -457,7 +458,11 @@ export default function AuthScreen({ onAuth }) {
                                         colors={["rgba(255,255,255,0.2)", "rgba(255,255,255,0.05)"]}
                                         style={s.logoGradient}
                                     >
-                                        <MessageSquare size={36} color="#fff" />
+                                        <Image
+                                            source={require("../../assets/logo.png")}
+                                            style={{ width: 50, height: 50, borderRadius: 12 }}
+                                            resizeMode="contain"
+                                        />
                                     </LinearGradient>
                                 </View>
                                 <Text style={s.appTitle}>Vérification SMS</Text>
@@ -615,12 +620,16 @@ export default function AuthScreen({ onAuth }) {
                                     colors={["rgba(255,255,255,0.2)", "rgba(255,255,255,0.05)"]}
                                     style={s.logoGradient}
                                 >
-                                    <Shield size={36} color="#fff" />
+                                    <Image
+                                        source={require("../../assets/logo.png")}
+                                        style={{ width: 50, height: 50, borderRadius: 12 }}
+                                        resizeMode="contain"
+                                    />
                                 </LinearGradient>
                                 <View style={s.logoPulse} />
                             </View>
 
-                            <Text style={s.appTitle}>MonBénin</Text>
+                            <Text style={s.appTitle}>Super App</Text>
                             <Text style={s.appSubtitle}>
                                 La super application citoyenne
                             </Text>

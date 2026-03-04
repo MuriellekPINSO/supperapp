@@ -1,26 +1,26 @@
 {
   "expo": {
-    "name": "MonBénin",
-    "slug": "MonBeninMobile",
-    "version": "1.0.0",
+    "name": "Super App",
+    "slug": "SuperApp",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#007A4D"
+      "backgroundColor": "#0A0E17"
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.monbenin.app"
+      "bundleIdentifier": "com.superapp.benin"
     },
     "android": {
-      "package": "com.monbenin.app",
+      "package": "com.superapp.benin",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#007A4D"
+        "backgroundColor": "#0A0E17"
       },
       "edgeToEdgeEnabled": true
     },

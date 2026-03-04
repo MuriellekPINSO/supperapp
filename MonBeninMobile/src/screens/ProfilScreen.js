@@ -129,7 +129,7 @@ export default function ProfilScreen() {
                     <TouchableOpacity onPress={logout} style={[s.logoutBtn, { backgroundColor: colors.redSoft, borderColor: "rgba(239,68,68,0.2)" }]} activeOpacity={0.7}>
                         <LogOut size={18} color={colors.red} /><Text style={[s.logoutText, { color: colors.red }]}>Se déconnecter</Text>
                     </TouchableOpacity>
-                    <Text style={[s.version, { color: colors.textMuted }]}>MonBénin v2.0 · SDK 54</Text>
+                    <Text style={[s.version, { color: colors.textMuted }]}>Super App v2.0 · SDK 54</Text>
                 </FadeInView>
             </ScrollView>
         </View>

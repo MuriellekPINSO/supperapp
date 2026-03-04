@@ -460,7 +460,7 @@ function MessageBubble({ message, colors, isDark, onPay }) {
                 </View>
             )}
             <View>
-                {!isUser && <Text style={[s.aiLabelText, { color: colors.textMuted }]}>IA MonBénin</Text>}
+                {!isUser && <Text style={[s.aiLabelText, { color: colors.textMuted }]}>IA Super App</Text>}
                 <View
                     style={[
                         s.bubble,
@@ -699,7 +699,7 @@ export default function AIChatScreen({ navigation }) {
                             <Sparkles size={14} color={colors.primaryLight} />
                         </View>
                         <View>
-                            <Text style={[s.aiLabelText, { color: colors.textMuted }]}>IA MonBénin</Text>
+                            <Text style={[s.aiLabelText, { color: colors.textMuted }]}>IA Super App</Text>
                             <View style={[s.bubbleAI, { backgroundColor: colors.bgCard, borderColor: colors.border }]}>
                                 <TypingIndicator color={colors.primary} />
                             </View>

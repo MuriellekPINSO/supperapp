@@ -875,10 +875,10 @@ export default function AuthScreen({ onAuth }) {
                                 >
                                     <Text style={s.submitBtnText}>
                                         {loading
-                                            ? "Envoi du code..."
+                                            ? "Connexion..."
                                             : isLogin
-                                                ? "Recevoir le code SMS"
-                                                : "S'inscrire et recevoir le code"}
+                                                ? "Se connecter"
+                                                : "S'inscrire"}
                                     </Text>
                                     {!loading && (
                                         <View style={s.submitArrow}>

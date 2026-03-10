@@ -357,7 +357,7 @@ function PaymentModal({ visible, payment, colors, isDark, onClose, onConfirm }) 
 
                             {stage === "success" && (
                                 <Animated.View
-                                    style={{ alignItems: "center", transform: [{ scale: checkAnim }] }}
+                                    style={{ width: "100%", alignItems: "center", transform: [{ scale: checkAnim }] }}
                                 >
                                     <View style={[s.successIcon, { backgroundColor: "rgba(0,224,142,0.15)" }]}>
                                         <CheckCircle size={40} color={colors.primaryLight} />
@@ -391,6 +391,7 @@ function PaymentModal({ visible, payment, colors, isDark, onClose, onConfirm }) 
                                             onConfirm(payment, refNumber);
                                         }}
                                         activeOpacity={0.85}
+                                        style={{ width: "100%" }}
                                     >
                                         <LinearGradient
                                             colors={[colors.primary, colors.primaryLight]}
